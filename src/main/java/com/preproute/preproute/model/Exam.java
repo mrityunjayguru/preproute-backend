@@ -18,8 +18,9 @@ import lombok.*;
 @Builder
 @Table(name = "exam")
 public class Exam {
-	  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long examid;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
     private String title;
     private LocalDateTime startTime;
     private LocalDateTime endTime;

@@ -1,12 +1,22 @@
 package com.preproute.preproute.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "question")
+
+
+
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +30,6 @@ public class Question {
     private String correctAnswer;
 
     @ManyToOne
-    @JoinColumn(name = "examid")
+    @JoinColumn(name = "exam_id")
     private Exam exam;
 }
