@@ -1,0 +1,44 @@
+name: Deploy Backend to Staging
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    - name: Deploy to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@13.204.25.170 << 'EOF'
+        cd /home/ubuntu/preproute-backend
+        
+        # Pull latest changes
+        git pull origin main
+        
+        # Build the application
+        chmod +x mvnw
+        ./mvnw clean package -DskipTests
+        
+        # Stop existing application
+        pkill -f "preproute-0.0.1-SNAPSHOT.war" || true
+        sleep 3
+        
+        # Start new application
+        cd target
+        nohup java -jar preproute-0.0.1-SNAPSHOT.war > ../app.log 2>&1 &
+        sleep 5
+        
+        echo "Deployment completed successfully"
+        echo "Application running at http://13.204.25.170:8080"
+        EOF
