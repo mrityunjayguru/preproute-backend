@@ -40,5 +40,5 @@ jobs:
         sleep 5
         
         echo "Deployment completed successfully"
-        echo "Application running at http://13.204.25.170:8080"
+        echo "Application running at http://13.204.25.170:8085"
         EOF
