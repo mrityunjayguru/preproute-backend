@@ -2,6 +2,7 @@ package com.preproute.preproute.service;
 
 
 import com.preproute.preproute.dto.UsersDTO;
+import com.preproute.preproute.jwtutil.JwtUtil;
 import com.preproute.preproute.dto.LoginDTO;
 import com.preproute.preproute.model.Users;
 import com.preproute.preproute.repository.UsersRepository;
@@ -17,6 +18,10 @@ public class UsersService {
 
     @Autowired
     private UsersRepository userRepository;
+    
+    
+    @Autowired
+    JwtUtil jwtUtil;
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -52,12 +57,14 @@ public class UsersService {
         );
 
         if (passwordMatch) {
-            return "Login successful!";
+        	 String token = jwtUtil.generateToken(user.getUsername());
+             return token;
         } else {
             return "Invalid credentials";
         }
     }
 
+    
     
     
     
