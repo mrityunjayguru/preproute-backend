@@ -22,6 +22,11 @@ public class Exam {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	 	private String title;
+	 	private String  name;        
+	 	private String  code;  
 	 	private LocalDateTime startTime;
 	 	private LocalDateTime endTime;
+	  	private String description; // Extra details (optional)
+		private LocalDateTime  createdAt; 
+		private LocalDateTime updatedAt;
 }
