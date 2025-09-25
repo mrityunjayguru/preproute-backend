@@ -27,7 +27,33 @@ public class UsersService {
 
     public String registerUser(UsersDTO usersDTO) {
         if (userRepository.existsByUsername(usersDTO.getUsername())) {
-            return "Username already exists";
+        	
+        	
+        	 Optional<Users> optionalUser = userRepository.findByUsername(usersDTO.getUsername());
+
+                 Users user = optionalUser.get();
+
+            // Optionally check if password has changed
+           /* if (!passwordEncoder.matches(usersDTO.getPassword(), user.getPassword())) {
+                user.setPassword(passwordEncoder.encode(usersDTO.getPassword()));
+            }
+*/
+            
+
+            user.setUsername(usersDTO.getUsername());
+            
+            user.setEmail(usersDTO.getEmail());
+            user.setPhone(usersDTO.getPhone());
+            user.setRole(usersDTO.getRole());
+            
+            
+
+            userRepository.save(user);
+            return "User updated successfully";
+
+            
+        	
+            
         }
 
         String encryptedPassword = passwordEncoder.encode(usersDTO.getPassword());
