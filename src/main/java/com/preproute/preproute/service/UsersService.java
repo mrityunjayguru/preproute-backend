@@ -35,6 +35,11 @@ public class UsersService {
         Users user = new Users();
         user.setUsername(usersDTO.getUsername());
         user.setPassword(encryptedPassword);
+        user.setEmail(usersDTO.getEmail());
+        user.setPhone(usersDTO.getPhone());
+        user.setRole(usersDTO.getRole());
+        
+        
 
         userRepository.save(user);
         return "User registered successfully";
