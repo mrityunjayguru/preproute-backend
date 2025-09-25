@@ -16,7 +16,7 @@ public class CodeMasterController {
     private CodeMasterService codemasterService;
 
     @PostMapping("/create")
-    public ResponseEntity<CodeMaster> createExam(@RequestBody CodeMaster codemaster) {
+    public ResponseEntity<CodeMaster> createCodeMaster(@RequestBody CodeMaster codemaster) {
         return ResponseEntity.ok(codemasterService.createCodeMaster(codemaster));
     }
 
