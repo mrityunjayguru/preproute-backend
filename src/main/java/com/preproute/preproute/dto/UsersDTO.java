@@ -19,6 +19,9 @@ public class UsersDTO {
     private String step;
     private String stream;
     private String year;
+    private String usertype;
+    private String source ;
+    
 
 }
 

@@ -41,6 +41,9 @@ public class Users {
     private String step;
     private String stream;
     private String year;
+    private String usertype;
+    private String source ;
+    
     
 
     // Constructors, getters, setters

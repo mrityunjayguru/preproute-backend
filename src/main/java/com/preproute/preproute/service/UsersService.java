@@ -53,6 +53,10 @@ public class UsersService {
             user.setStep(usersDTO.getStep());
             user.setStream(usersDTO.getStream());
             user.setYear(usersDTO.getYear());
+            
+            user.setUsertype(usersDTO.getUsertype());
+            user.setSource(usersDTO.getSource());
+            
            
             
             
@@ -84,6 +88,8 @@ public class UsersService {
         user.setStream(usersDTO.getStream());
         user.setYear(usersDTO.getYear());
         
+        user.setUsertype(usersDTO.getUsertype());
+        user.setSource(usersDTO.getSource());
                
         
 
