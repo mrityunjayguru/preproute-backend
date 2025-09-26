@@ -11,6 +11,15 @@ public class UsersDTO {
     private String email;
     private String phone;
     private String role;
+    private String confirmpassword;
+    private String exam;
+    private String firstname;
+    private String lastname;
+    private String name;
+    private String step;
+    private String stream;
+    private String year;
+
 }
 
 

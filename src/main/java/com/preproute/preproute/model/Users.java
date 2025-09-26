@@ -32,6 +32,16 @@ public class Users {
     private String password;
 
     private String role; // e.g., ROLE_ADMIN, ROLE_STUDENT
+    
+    private String confirmpassword;
+    private String exam;
+    private String firstname;
+    private String lastname;
+    private String name;
+    private String step;
+    private String stream;
+    private String year;
+    
 
     // Constructors, getters, setters
 }

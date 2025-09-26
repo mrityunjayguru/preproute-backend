@@ -45,6 +45,14 @@ public class UsersService {
             user.setEmail(usersDTO.getEmail());
             user.setPhone(usersDTO.getPhone());
             user.setRole(usersDTO.getRole());
+            user.setExam(usersDTO.getExam());
+            user.setFirstname(usersDTO.getFirstname());
+            user.setLastname(usersDTO.getLastname());
+            user.setName(usersDTO.getName()); 
+            user.setStep(usersDTO.getStep());
+            user.setStream(usersDTO.getStream());
+            user.setYear(usersDTO.getYear());
+           
             
             
 
@@ -61,10 +69,21 @@ public class UsersService {
         Users user = new Users();
         user.setUsername(usersDTO.getUsername());
         user.setPassword(encryptedPassword);
+        user.setConfirmpassword(encryptedPassword);
+        
         user.setEmail(usersDTO.getEmail());
         user.setPhone(usersDTO.getPhone());
         user.setRole(usersDTO.getRole());
         
+        user.setExam(usersDTO.getExam());
+        user.setFirstname(usersDTO.getFirstname());
+        user.setLastname(usersDTO.getLastname());
+        user.setName(usersDTO.getName()); 
+        user.setStep(usersDTO.getStep());
+        user.setStream(usersDTO.getStream());
+        user.setYear(usersDTO.getYear());
+        
+               
         
 
         userRepository.save(user);
