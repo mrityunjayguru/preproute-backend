@@ -3,6 +3,7 @@ package com.preproute.preproute.service;
 
 import com.preproute.preproute.dto.UsersDTO;
 import com.preproute.preproute.jwtutil.JwtUtil;
+import com.preproute.preproute.dto.CommonResponse;
 import com.preproute.preproute.dto.LoginDTO;
 import com.preproute.preproute.model.Users;
 import com.preproute.preproute.repository.UsersRepository;
@@ -92,7 +93,7 @@ public class UsersService {
     
     
     
-    
+   /* 
     public String loginUser(LoginDTO loginDTO) {
         Optional<Users> optionalUser = userRepository.findByUsername(loginDTO.getUsername());
 
@@ -114,8 +115,29 @@ public class UsersService {
         }
     }
 
+    */
     
     
+    public CommonResponse loginUser(LoginDTO loginDTO) {
+        Optional<Users> optionalUser = userRepository.findByUsername(loginDTO.getUsername());
+
+        if (optionalUser.isEmpty()) {
+            return new CommonResponse("User not found", 404, null, null);
+        }
+
+        Users user = optionalUser.get();
+
+        boolean passwordMatch = passwordEncoder.matches(
+            loginDTO.getPassword(), user.getPassword()
+        );
+
+        if (passwordMatch) {
+            String token = jwtUtil.generateToken(user.getUsername());
+            return new CommonResponse("Login successful", 200, token, user);
+        } else {
+            return new CommonResponse("Invalid credentials", 401, null, null);
+        }
+    }
     
     
 }

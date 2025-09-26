@@ -1,6 +1,7 @@
 package com.preproute.preproute.controller;
 
 
+import com.preproute.preproute.dto.CommonResponse;
 import com.preproute.preproute.dto.LoginDTO;
 import com.preproute.preproute.dto.UsersDTO;
 import com.preproute.preproute.service.UsersService;
@@ -21,7 +22,7 @@ public class UsersController {
     
     
     @PostMapping("/login")
-    public String login(@RequestBody LoginDTO loginDTO) {
+    public CommonResponse login(@RequestBody LoginDTO loginDTO) {
         return userService.loginUser(loginDTO);
     }
 
