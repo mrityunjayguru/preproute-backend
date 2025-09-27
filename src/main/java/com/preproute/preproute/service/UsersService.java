@@ -26,7 +26,7 @@ public class UsersService {
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public String registerUser(UsersDTO usersDTO) {
+    public CommonResponse registerUser(UsersDTO usersDTO) {
         if (userRepository.existsByUsername(usersDTO.getUsername())) {
         	
         	
@@ -38,7 +38,7 @@ public class UsersService {
            /* if (!passwordEncoder.matches(usersDTO.getPassword(), user.getPassword())) {
                 user.setPassword(passwordEncoder.encode(usersDTO.getPassword()));
             }
-*/
+            */
             
 
             user.setUsername(usersDTO.getUsername());
@@ -56,14 +56,16 @@ public class UsersService {
             
             user.setUsertype(usersDTO.getUsertype());
             user.setSource(usersDTO.getSource());
-            
-           
-            
-            
-
+         
             userRepository.save(user);
-            return "User updated successfully";
+            
 
+            user.setConfirmpassword(null);
+            user.setPassword(null);
+            
+            
+            return new CommonResponse("User updated successfully", 200, null, user);
+            
             
         	
             
@@ -94,7 +96,13 @@ public class UsersService {
         
 
         userRepository.save(user);
-        return "User registered successfully";
+        
+        user.setConfirmpassword(null);
+        user.setPassword(null);
+        
+        
+        return new CommonResponse("User registered successfully", 200, null, user);
+        
     }
     
     
@@ -139,6 +147,9 @@ public class UsersService {
 
         if (passwordMatch) {
             String token = jwtUtil.generateToken(user.getUsername());
+            
+            user.setConfirmpassword(null);
+            user.setPassword(null);
             return new CommonResponse("Login successful", 200, token, user);
         } else {
             return new CommonResponse("Invalid credentials", 401, null, null);

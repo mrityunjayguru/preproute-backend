@@ -16,7 +16,7 @@ public class UsersController {
     private UsersService userService;
 
     @PostMapping("/register")
-    public String register(@RequestBody UsersDTO userDTO) {
+    public CommonResponse register(@RequestBody UsersDTO userDTO) {
         return userService.registerUser(userDTO);
     }
     
