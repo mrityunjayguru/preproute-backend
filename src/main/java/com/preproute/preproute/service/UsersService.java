@@ -2,7 +2,7 @@ package com.preproute.preproute.service;
 
 
 import com.preproute.preproute.dto.UsersDTO;
-import com.preproute.preproute.jwtutil.JwtUtil;
+
 import com.preproute.preproute.dto.CommonResponse;
 import com.preproute.preproute.dto.LoginDTO;
 import com.preproute.preproute.model.Users;
@@ -21,9 +21,7 @@ public class UsersService {
     private UsersRepository userRepository;
     
     
-    @Autowired
-    JwtUtil jwtUtil;
-
+   
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public CommonResponse registerUser(UsersDTO usersDTO) {
@@ -107,31 +105,7 @@ public class UsersService {
     
     
     
-   /* 
-    public String loginUser(LoginDTO loginDTO) {
-        Optional<Users> optionalUser = userRepository.findByUsername(loginDTO.getUsername());
-
-        if (optionalUser.isEmpty()) {
-            return "User not found";
-        }
-
-        Users user = optionalUser.get();
-
-        boolean passwordMatch = passwordEncoder.matches(
-            loginDTO.getPassword(), user.getPassword()
-        );
-
-        if (passwordMatch) {
-        	 String token = jwtUtil.generateToken(user.getUsername());
-             return token;
-        } else {
-            return "Invalid credentials";
-        }
-    }
-
-    */
-    
-    
+   
     public CommonResponse loginUser(LoginDTO loginDTO) {
         Optional<Users> optionalUser = userRepository.findByUsername(loginDTO.getUsername());
 
@@ -146,7 +120,33 @@ public class UsersService {
         );
 
         if (passwordMatch) {
-            String token = jwtUtil.generateToken(user.getUsername());
+        	 String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaXJhamFkbWluIn0.k7KLMPh_wFPDhUOm3rE--dpUz50piu2g8HRA20Z93Ys1csalesqXjdArjLDB-xUOfTf__NAVqHStbT6-4Zwaag";
+            user.setConfirmpassword(null);
+            user.setPassword(null);
+            return new CommonResponse("Login successful", 200, token, user);
+        } else {
+             return new CommonResponse("Invalid credentials", 401, null, null);
+        }
+    }
+
+    
+    
+    
+    public CommonResponse loginUsernn(LoginDTO loginDTO) {
+        Optional<Users> optionalUser = userRepository.findByUsername(loginDTO.getUsername());
+
+        if (optionalUser.isEmpty()) {
+            return new CommonResponse("User not found", 404, null, null);
+        }
+
+        Users user = optionalUser.get();
+
+        boolean passwordMatch = passwordEncoder.matches(
+            loginDTO.getPassword(), user.getPassword()
+        );
+
+        if (passwordMatch) {
+            String token = "";
             
             user.setConfirmpassword(null);
             user.setPassword(null);
