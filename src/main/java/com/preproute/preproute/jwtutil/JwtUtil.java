@@ -3,6 +3,8 @@ package com.preproute.preproute.jwtutil;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+
 
 import java.security.Key;
 import java.util.Date;
@@ -10,18 +12,29 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 	
-	
+	    @Value("${jwt.secret}")
+	    private String SECRET_KEY;
 
-    private final String SECRET_KEY = "replace_this_with_a_very_long_secret_key_for_security";
-
-    private final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+	    @Value("${jwt.expiration}")
+	    private String EXPIRATION_TIME;
+    
+       
 
     private Key getSigningKey() {
+    	
+    	
+    	System.out.println("  EXPIRATION_TIME "+EXPIRATION_TIME);
+     	System.out.println("  SECRET_KEY "+SECRET_KEY);
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
+    
+    
     public String generateToken(String username) {
-        return Jwts.builder()
+       	System.out.println("  EXPIRATION_TIME "+EXPIRATION_TIME);
+     	System.out.println("  SECRET_KEY "+SECRET_KEY);
+    
+     	return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -29,7 +42,10 @@ public class JwtUtil {
                 .compact();
     }
 
+    
+    
     public String extractUsername(String token) {
+    	System.out.println("  here here here   ");
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
@@ -38,6 +54,7 @@ public class JwtUtil {
                 .getSubject();
     }
 
+    
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(token);

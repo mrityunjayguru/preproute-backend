@@ -29,12 +29,8 @@ public class Question {
     private String optionD;
     private String correctAnswer;
 
-    @ManyToOne
-    @JoinColumn(name = "exam_id")
-    private Exam exam;
+  
     
     
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users users ;
+ 
 }
