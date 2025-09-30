@@ -22,7 +22,9 @@ public class ExamType {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	 	private String title;
-	 	private String  name;        
+	 	private String  name;   
+	 	private Integer examduration;
+	 	private Boolean switchable;
 	 	private String  code;  
 	 	private LocalDateTime startTime;
 	 	private LocalDateTime endTime;

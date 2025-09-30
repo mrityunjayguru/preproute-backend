@@ -34,4 +34,12 @@ public class Topic {
 	     @ManyToOne
 	     @JoinColumn(name = "section_id")
 	     private Sections sections;
+	     
+	     @ManyToOne
+		    @JoinColumn(name = "exam_id")
+		    private ExamType examType;
+	     
+	     
+	     
+	     
 }

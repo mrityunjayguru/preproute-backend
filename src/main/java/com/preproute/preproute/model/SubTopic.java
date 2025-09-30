@@ -36,4 +36,13 @@ public class SubTopic {
 	     @ManyToOne
 	     @JoinColumn(name = "topic_id")
 	     private Topic topic;
+	     
+	     @ManyToOne
+	     @JoinColumn(name = "section_id")
+	     private Sections sections;
+	     
+	     @ManyToOne
+		    @JoinColumn(name = "exam_id")
+		    private ExamType examType;
+	     
 }
