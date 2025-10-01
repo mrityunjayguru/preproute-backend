@@ -24,7 +24,7 @@ public class ExamTypeService {
     
     
     public Page<ExamType> getPaginatedExamTypes(int page, int size, String sortBy) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).descending() );
         return examTypeRepository.findAll(pageable);
     }
 }
