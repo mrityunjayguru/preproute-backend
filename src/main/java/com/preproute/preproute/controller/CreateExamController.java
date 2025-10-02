@@ -24,14 +24,11 @@ public class CreateExamController {
         return ResponseEntity.ok(createexamService.createExam(createexam));
     }
 
-
- // Test endpoint
     @GetMapping("/getdatabycreateexamname")
-    public ResponseEntity<CreateExam> getDataByCreateExamName(@RequestParam String name) {
-        return createexamService.getAllByName(name)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public List<CreateExam> getDataByCreateExamName(@RequestParam String name) {
+        return createexamService.getAllByName(name);
     }
+
     
     
 

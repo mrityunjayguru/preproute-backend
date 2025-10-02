@@ -25,8 +25,8 @@ public class CreateExamService {
         return createexamRepository.findAll();
     }
 
-     public Optional<CreateExam> getAllByName(String name) {
-        return createexamRepository.findByNameNative(name);
+     public List<CreateExam> getAllByName(String name) {
+        return createexamRepository.findByExamname(name);
     }
     
     
@@ -34,4 +34,9 @@ public class CreateExamService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).descending() );
         return createexamRepository.findAll(pageable);
     }
+
+	public Optional<CreateExam> findByExamnameNative(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
