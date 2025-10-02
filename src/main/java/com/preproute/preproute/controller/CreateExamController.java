@@ -24,6 +24,8 @@ public class CreateExamController {
         return ResponseEntity.ok(createexamService.createExam(createexam));
     }
 
+
+    // Test
     @GetMapping("/getdatabycreateexamname")
     public ResponseEntity<Optional<CreateExam>> getdatabycreateexamname(@RequestParam String name) {
         return ResponseEntity.ok(createexamService.getAllByName(name));
