@@ -33,9 +33,9 @@ public class Question {
 
     private String examformat;
     private Long numberofquestion;
-    private Long questiontype;
-    private Long questionsolution;
-    private Long answertype;
+    private  String questiontype;
+    private  String questionsolution;
+    private String answertype;
     private String previewwindow;
     private String sectiontype;
     private String topicname;
