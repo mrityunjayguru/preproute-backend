@@ -26,7 +26,7 @@ public class CreateExamService {
     }
 
      public Optional<CreateExam> getAllByName(String name) {
-        return createexamRepository.findByName(name);
+        return createexamRepository.findByNameNative(name);
     }
     
     
