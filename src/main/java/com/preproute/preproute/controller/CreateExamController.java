@@ -25,11 +25,15 @@ public class CreateExamController {
     }
 
 
-    // Test
+ // Test endpoint
     @GetMapping("/getdatabycreateexamname")
-    public ResponseEntity<Optional<CreateExam>> getdatabycreateexamname(@RequestParam String name) {
-        return ResponseEntity.ok(createexamService.getAllByName(name));
+    public ResponseEntity<CreateExam> getDataByCreateExamName(@RequestParam String name) {
+        return createexamService.getAllByName(name)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
+    
+    
 
 
     @GetMapping

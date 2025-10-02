@@ -12,6 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface CreateExamRepository extends JpaRepository<CreateExam, Long> {
-	@Query(value = "SELECT * FROM createexam WHERE name = :name", nativeQuery = true)
+	@Query(value = "SELECT * FROM createexam WHERE examname = :name", nativeQuery = true)
     Optional<CreateExam> findByNameNative(@Param("name") String name);
 }
