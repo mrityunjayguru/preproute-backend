@@ -5,6 +5,7 @@ import com.preproute.preproute.repository.ExamTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.*;
+import java.util.Optional;
 
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class ExamTypeService {
     public List<ExamType> getAllExams() {
         return examTypeRepository.findAll();
     }
+
+
+
     
     
     public Page<ExamType> getPaginatedExamTypes(int page, int size, String sortBy) {

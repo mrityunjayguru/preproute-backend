@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/createexam")
@@ -22,6 +23,12 @@ public class CreateExamController {
     public ResponseEntity<CreateExam> createExam(@RequestBody CreateExam createexam) {
         return ResponseEntity.ok(createexamService.createExam(createexam));
     }
+
+    @GetMapping("/getdatabycreateexamname")
+    public ResponseEntity<Optional<CreateExam>> getdatabycreateexamname(@RequestParam String name) {
+        return ResponseEntity.ok(createexamService.getAllByName(name));
+    }
+
 
     @GetMapping
     public List<CreateExam> getAllExams() {

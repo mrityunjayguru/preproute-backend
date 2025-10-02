@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CreateExamService {
@@ -22,6 +23,10 @@ public class CreateExamService {
 
     public List<CreateExam> getAllCreateExam() {
         return createexamRepository.findAll();
+    }
+
+     public Optional<CreateExam> getAllByName(String name) {
+        return createexamRepository.findByName(name);
     }
     
     
