@@ -2,6 +2,7 @@ package com.preproute.preproute.controller;
 
 
 import com.preproute.preproute.model.CreateExam;
+import com.preproute.preproute.repository.CreateExamRepository;
 import com.preproute.preproute.service.CreateExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,10 @@ public class CreateExamController {
     @Autowired
     private CreateExamService createexamService;
 
+    @Autowired
+    private CreateExamRepository createExamRepository;
+
+    
     @PostMapping("/create")
     public ResponseEntity<CreateExam> createExam(@RequestBody CreateExam createexam) {
         return ResponseEntity.ok(createexamService.createExam(createexam));

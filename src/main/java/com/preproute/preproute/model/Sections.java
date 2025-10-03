@@ -34,6 +34,7 @@ public class Sections {
 		private LocalDateTime  createdAt; 
 		private LocalDateTime updatedAt;
 		private String others;
+		private int sectionnumberofquestion;
 		
 		@ManyToOne
 	    @JoinColumn(name = "exam_id", nullable = false)
