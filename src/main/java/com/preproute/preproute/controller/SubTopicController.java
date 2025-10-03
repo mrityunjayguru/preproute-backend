@@ -2,6 +2,8 @@ package com.preproute.preproute.controller;
 
 
 import com.preproute.preproute.model.SubTopic;
+import com.preproute.preproute.model.Topic;
+import com.preproute.preproute.repository.SubTopicRepository;
 import com.preproute.preproute.service.SubTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ public class SubTopicController {
 
     @Autowired
     private SubTopicService subtopicService;
+    
+    @Autowired
+    private SubTopicRepository subTopicRepository;
 
     @PostMapping("/create")
     public ResponseEntity<SubTopic> createTopic(@RequestBody SubTopic subtopic) {
@@ -26,4 +31,15 @@ public class SubTopicController {
     public List<SubTopic> getAllSubTopic() {
         return subtopicService.getAllSubTopic();
     }
+    
+    
+    
+    @GetMapping("/getallsubtopicsbytopicid")
+    public List<SubTopic> getallsybtopicsbytopicid(@RequestParam Long topicid ) {
+        return subTopicRepository.findTopicByTopicId(topicid);
+    }
+    
+    
+    
+    
 }
