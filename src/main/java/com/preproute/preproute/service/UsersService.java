@@ -127,7 +127,7 @@ public class UsersService {
             user.setPassword(null);
             return new CommonResponse("Login successful", 200, token, user);
         } else {
-             return new CommonResponse("Invalid credentials", 401, null, null);
+             return new CommonResponse("Invalid credentials or user has been deactivated", 401, null, null);
         }
     }
 
