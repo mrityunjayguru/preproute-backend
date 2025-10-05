@@ -21,6 +21,7 @@ public class UsersDTO {
     private String year;
     private String usertype;
     private String source ;
+    private String  delflag="N";
     
 
 }

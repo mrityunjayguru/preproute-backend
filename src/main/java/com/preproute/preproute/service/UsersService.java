@@ -54,7 +54,9 @@ public class UsersService {
             
             user.setUsertype(usersDTO.getUsertype());
             user.setSource(usersDTO.getSource());
-         
+            
+            user.setDelflag(usersDTO.getDelflag() );
+            
             userRepository.save(user);
             
 
@@ -146,7 +148,7 @@ public class UsersService {
         );
 
         if (passwordMatch) {
-            String token = "";
+            String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaXJhamFkbWluIn0.k7KLMPh_wFPDhUOm3rE--dpUz50piu2g8HRA20Z93Ys1csalesqXjdArjLDB-xUOfTf__NAVqHStbT6-4Zwaag";
             
             user.setConfirmpassword(null);
             user.setPassword(null);

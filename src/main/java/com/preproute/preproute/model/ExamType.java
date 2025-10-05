@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.*;
+import lombok.Builder;
+import lombok.Builder.Default;
 
 @Entity
 @Getter
@@ -28,7 +30,12 @@ public class ExamType {
 	 	private String  code;  
 	 	private LocalDateTime startTime;
 	 	private LocalDateTime endTime;
-	  	private String description; // Extra details (optional)
-		private LocalDateTime  createdAt; 
+	  	private String description; 
+	  	
+	  	@Builder.Default
+		private LocalDateTime  createdAt =  LocalDateTime.now();;
 		private LocalDateTime updatedAt;
+		
+		 @Builder.Default
+		private String  delflag="N";
 }

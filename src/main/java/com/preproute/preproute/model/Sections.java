@@ -31,8 +31,16 @@ public class Sections {
 	    private Long id;
 	 	private String sectiontype;
 	 	private String description; 
-		private LocalDateTime  createdAt; 
-		private LocalDateTime updatedAt;
+	 	
+	 	@Builder.Default
+		private LocalDateTime  createdAt =  LocalDateTime.now();
+		
+		@Builder.Default
+		private LocalDateTime updatedAt = LocalDateTime.now();
+		
+		@Builder.Default
+		private String  delflag="N";
+	    
 		private String others;
 		private Integer sectionnumberofquestion;
 		

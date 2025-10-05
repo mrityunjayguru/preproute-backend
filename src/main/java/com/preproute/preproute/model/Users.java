@@ -1,5 +1,7 @@
 package com.preproute.preproute.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -43,6 +45,18 @@ public class Users {
     private String year;
     private String usertype;
     private String source ;
+    
+	@Builder.Default
+	private LocalDateTime  createdAt =  LocalDateTime.now();
+	
+	@Builder.Default
+	private LocalDateTime updatedAt = LocalDateTime.now();
+	
+	
+	
+	
+	 @Builder.Default
+	private String  delflag="N";
     
     
 

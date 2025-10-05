@@ -30,8 +30,16 @@ public class CreateExam {
 	 	private LocalDateTime startTime;
 	 	private LocalDateTime endTime;
 	  	private String description; // Extra details (optional)
-		private LocalDateTime  createdAt; 
-		private LocalDateTime updatedAt;
+	  	
+	  	@Builder.Default
+		private LocalDateTime  createdAt =  LocalDateTime.now();
+		
+		@Builder.Default
+		private LocalDateTime updatedAt = LocalDateTime.now();
+		
+		@Builder.Default
+		private String  delflag="N";
+	    
 		
 		private Long noofquestion;
 		
