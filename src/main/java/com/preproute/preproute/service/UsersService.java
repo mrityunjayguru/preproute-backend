@@ -121,7 +121,7 @@ public class UsersService {
             loginDTO.getPassword(), user.getPassword()
         );
 
-        if (passwordMatch) {
+        if (passwordMatch && user.getDelflag().equals("N")) {
         	 String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaXJhamFkbWluIn0.k7KLMPh_wFPDhUOm3rE--dpUz50piu2g8HRA20Z93Ys1csalesqXjdArjLDB-xUOfTf__NAVqHStbT6-4Zwaag";
             user.setConfirmpassword(null);
             user.setPassword(null);
