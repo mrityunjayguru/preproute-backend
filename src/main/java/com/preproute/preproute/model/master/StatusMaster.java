@@ -26,7 +26,17 @@ public class StatusMaster {
 	 	private String name;
 	 	private String status;
 	 	private String  description;        
-	 	private LocalDateTime  createdAt; 
-		private LocalDateTime updatedAt;
+	 	@Builder.Default
+		private LocalDateTime  createdAt =  LocalDateTime.now();
+		
+		@Builder.Default
+		private LocalDateTime updatedAt = LocalDateTime.now();
+		
+		
+		
+		
+		 @Builder.Default
+		private String  delflag="N";
+	    
 
 }
