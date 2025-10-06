@@ -18,7 +18,7 @@ public class CodeMasterService {
 	    }
 
 	    public List<CodeMaster> getAllCodeMaster() {
-	        return codemasterRepository.findAll();
+	        return codemasterRepository.findAllHavingDelFlagIsN();
 	    }
 	
 	
