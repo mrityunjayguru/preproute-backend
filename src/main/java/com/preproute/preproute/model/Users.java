@@ -54,7 +54,6 @@ public class Users {
 	
 	
 	
-	
 	 @Builder.Default
 	private String  delflag="N";
     
