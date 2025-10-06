@@ -24,11 +24,28 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String content;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String optionA;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String optionB;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String optionC;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String optionD;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String correctAnswer;
 
     private String examformat;
