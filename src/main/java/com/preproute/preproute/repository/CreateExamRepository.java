@@ -26,7 +26,14 @@ public interface CreateExamRepository extends JpaRepository<CreateExam, Long> {
 	 List<CreateExam> findByexamid(@Param("exam_id") Long exam_id);
 	 
 	 
+
 	 
+	 
+	@Query(value = "SELECT examname FROM createexam WHERE exam_id = :exam_id and delflag='N'   group by examname ", nativeQuery = true)
+	List<String> findexamnamebyexamid(@Param("exam_id") Long exam_id);
+	 
+	 			 
+			 
 
 	 @Query(value = "SELECT * FROM createexam WHERE exam_id = :exam_id and examname= :examname and  delflag='N' ", nativeQuery = true)
 	 List<CreateExam> findByexamidAndExamName(@Param("exam_id") Long exam_id,@Param("examname") String  examname);
