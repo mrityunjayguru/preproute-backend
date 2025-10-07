@@ -57,7 +57,7 @@ public class Question {
     private String sectiontype;
     private String topicname;
     private String subtopicname;
-    private String examtype;
+    private String examtypename;
     private String creaeeexamname;
     
     private String others;
@@ -72,9 +72,9 @@ public class Question {
 	
 	 @ManyToOne
 	    @JoinColumn(name = "exam_id")
-	    private ExamType examType;
+	    private ExamType examtype;
 	 
-	 private String  examtypename;
+	 
 	 
 	 
 	  @ManyToOne
