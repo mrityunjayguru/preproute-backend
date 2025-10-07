@@ -58,6 +58,8 @@ public class Question {
     private String topicname;
     private String subtopicname;
     private String examtype;
+    private String creaeeexamname;
+    
     private String others;
     
     @Builder.Default
@@ -65,6 +67,46 @@ public class Question {
 	
 	@Builder.Default
 	private LocalDateTime updatedAt = LocalDateTime.now();
+	
+	
+	
+	 @ManyToOne
+	    @JoinColumn(name = "exam_id")
+	    private ExamType examType;
+	 
+	 private String  examtypename;
+	 
+	 
+	  @ManyToOne
+	     @JoinColumn(name = "section_id")
+	     private Sections sections;
+	 
+	
+	  private String  sectionsname;
+	  
+	  
+	   @ManyToOne
+	     @JoinColumn(name = "topic_id")
+	     private Topic topic;
+	   
+	   
+	  
+	
+	
+	   
+	   @ManyToOne
+	     @JoinColumn(name = "subtopic_id")
+	     private SubTopic subtopic;
+	   
+	   
+	 
+	   @ManyToOne
+	     @JoinColumn(name = "createexam_id")
+	     private CreateExam createexam;
+	  
+	
+	
+	
 	
 	@Builder.Default
 	private String  delflag="N";
