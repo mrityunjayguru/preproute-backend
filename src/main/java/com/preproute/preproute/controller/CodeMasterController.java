@@ -1,5 +1,7 @@
 package com.preproute.preproute.controller;
 
+import com.preproute.preproute.dto.CommonResponse;
+import com.preproute.preproute.dto.CommonResponseAll;
 import com.preproute.preproute.model.master.CodeMaster;
 import com.preproute.preproute.repository.CodeMasterRepository;
 import com.preproute.preproute.service.CodeMasterService;
@@ -31,11 +33,18 @@ public class CodeMasterController {
     
     
     @PostMapping("/delete")
-    public int deleteFlag(
-            @RequestParam Long id,
-            @RequestParam String delflag
-    ) {
-        return codeMasterRepository.setDelFlagNOrY(id, delflag);
+    public CommonResponseAll deleteFlag(@RequestBody CodeMaster codemaster) {
+        int i =  codeMasterRepository.setDelFlagNOrY(codemaster.getId() , codemaster.getDelflag());
+       
+        if(i==0)
+        {
+        	return new CommonResponseAll("Unable to update data, row(s) affected :-  "+i, 200, null, null);
+        }
+        else
+        {
+        	return new CommonResponseAll("Data updated successfully, row(s) affected :-  "+i, 200, null, null);
+        }
+               
     }
     
     

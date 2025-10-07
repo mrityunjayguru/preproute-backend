@@ -36,6 +36,14 @@ public class CreateExamController {
 
     
     
+    @GetMapping("/getdatabyid")
+    public Optional<CreateExam> getDataById(@RequestParam Long id) {
+        return createExamRepository.findById(id);
+    }
+    
+    
+    
+    
 
 
     @GetMapping

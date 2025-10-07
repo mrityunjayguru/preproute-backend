@@ -22,5 +22,9 @@ public interface CodeMasterRepository extends JpaRepository<CodeMaster, Long> {
 	@Modifying
 	@Transactional
 	@Query(value = "UPDATE codemaster SET delflag = :delflag WHERE id = :id", nativeQuery = true)
-  public	int setDelFlagNOrY(@Param("id") Long id, @Param("delflag") String delflag);
+    public	int setDelFlagNOrY(@Param("id") Long id, @Param("delflag") String delflag);
+	
+	
+	
+	
 }
