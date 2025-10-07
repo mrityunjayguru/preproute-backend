@@ -42,6 +42,10 @@ public class CreateExamController {
     }
     
     
+    @GetMapping("/getdatabyexamtypeid")
+    public List<CreateExam> getdatabyexamtypeid(@RequestParam Long examtypeid) {
+        return createExamRepository.findByexamid(examtypeid);
+    }
     
     
 
